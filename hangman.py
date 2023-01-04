@@ -2,6 +2,8 @@ import random
 
 board = ""
 boardOutlook = []
+s = set()
+holder = True
   
   
 def words():
@@ -14,19 +16,31 @@ def printBoard(word):
   print("This is the board")
   global board, boardOutlook
   board = ""
-  i = 0
   for char in word:
-    if boardOutlook[i]:
+    if char in s:
       board += char+" "
     else:
       board += "_ "
-    i = i+1
+  global holder
+  if "_" in board:
+    holder = True
+  else:
+    holder = False
   return board
 
 
-gameFinished = False
+def play(wrd):
+  letter = input("Enter a letter: ")
+  global s
+  while letter in s:
+    letter = input("Enter a new letter you have not guessed: ")
+  s.add(letter)
+  print(printBoard(wrd))
+  
+
 gameWord = words()
 boardOutlook = [False] * len(gameWord)
 print(printBoard(gameWord))
-while (gameFinished!=True):
-  gameFinished = True
+while (holder):
+  play(gameWord)
+  
