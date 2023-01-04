@@ -1,10 +1,7 @@
 import random
 
-def game():
-  print("Game Starting")
-  gameWord = words()
-  print(printBoard(gameWord))
-  
+board = ""
+boardOutlook = []
   
   
 def words():
@@ -15,10 +12,21 @@ def words():
 
 def printBoard(word):
   print("This is the board")
+  global board, boardOutlook
   board = ""
+  i = 0
   for char in word:
-    board += "_ "
+    if boardOutlook[i]:
+      board += char+" "
+    else:
+      board += "_ "
+    i = i+1
   return board
 
 
-game()
+gameFinished = False
+gameWord = words()
+boardOutlook = [False] * len(gameWord)
+print(printBoard(gameWord))
+while (gameFinished!=True):
+  gameFinished = True
