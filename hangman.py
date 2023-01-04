@@ -25,6 +25,7 @@ def printBoard(word):
     holder = True
   else:
     holder = False
+    print("Congratulations you won!")
   return board
 
 
@@ -34,11 +35,17 @@ def play(wrd):
   while letter in s:
     letter = input("Enter a new letter you have not guessed: ")
   s.add(letter)
+  global i
+  if letter not in wrd:
+    i = i-1
   print(printBoard(wrd))
   
 
+i = 4
 gameWord = words()
 print(printBoard(gameWord))
 while (holder):
+  if i<0:
+    holder = False
+    print("You lose")
   play(gameWord)
-  
