@@ -39,13 +39,14 @@ def play(wrd):
   if letter not in wrd:
     i = i-1
   print(printBoard(wrd))
+  print("You have "+str(i)+" lives left")
   
 
-i = 4
+i = 5
 gameWord = words()
 print(printBoard(gameWord))
 while (holder):
-  if i<0:
+  if i<1:
     holder = False
     print("You lose")
   play(gameWord)
