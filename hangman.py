@@ -1,7 +1,6 @@
 import random
 
 board = ""
-boardOutlook = []
 s = set()
 holder = True
   
@@ -14,7 +13,7 @@ def words():
 
 def printBoard(word):
   print("This is the board")
-  global board, boardOutlook
+  global board
   board = ""
   for char in word:
     if char in s:
@@ -39,7 +38,6 @@ def play(wrd):
   
 
 gameWord = words()
-boardOutlook = [False] * len(gameWord)
 print(printBoard(gameWord))
 while (holder):
   play(gameWord)
